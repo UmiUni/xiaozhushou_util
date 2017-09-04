@@ -2,6 +2,7 @@
 import settings
 import itchat
 
+
 #get chatroom id from chatroom name
 def getName(chatroomName):
     cur_chatrooms = itchat.search_chatrooms(name=chatroomName)
@@ -49,10 +50,12 @@ def delFromAllGroup(content):
     delUser(chatroomId,content)
 
 #del a using according to content and roomId
-def delUser(roomId, content):
+def delUser(roomId, content, ADMIN):
   if(roomId is None):
-    return 
+    return
   #ret = itchat.delete_member_from_chatroom(roomId,[{'UserName':searchUser(getChatroomMemberList(roomId),content)}])
+  content = content.replace(ADMIN, '')
+  itchat.send(content, toUserName=roomId)
   ret = itchat.delete_member_from_chatroom(roomId,searchUser(getChatroomMemberList(roomId),content))
   if(ret):
     itchat.send('谢谢群主，为保持群内清洁,已清除广告号~😊',toUserName=roomId)
@@ -76,9 +79,9 @@ def getChatroomMemberList(roomId):
 
 def preventAbuseTalking(CurUserName):
   if(CurUserName in settings.usersDict):
-    if(settings.usersDict[CurUserName] >= 4):
+    if(settings.usersDict[CurUserName] >= 5):
       return True
-    if(settings.usersDict[CurUserName] >= 3):
+    if(settings.usersDict[CurUserName] >= 4):
       itchat.send_msg(settings.vT, CurUserName)
       itchat.send_msg(u'您已达到今日加群上限，请明日再来～😊', CurUserName)
       return True
