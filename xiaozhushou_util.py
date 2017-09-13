@@ -85,7 +85,7 @@ def getChatroomMemberList(roomId):
 def preventAbuseTalking(CurUserName):
   if(CurUserName in settings.usersDict):
     settings.usersDict[CurUserName] = settings.usersDict[CurUserName] + 1
-    if(settings.usersDict[CurUserName] >= 6):
+    if(settings.usersDict[CurUserName] >= 9):
       return True
     if(settings.usersDict[CurUserName] >= 5):
       itchat.send_msg(settings.vT, CurUserName)
