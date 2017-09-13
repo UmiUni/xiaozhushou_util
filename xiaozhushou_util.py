@@ -84,6 +84,7 @@ def getChatroomMemberList(roomId):
 
 def preventAbuseTalking(CurUserName):
   if(CurUserName in settings.usersDict):
+    settings.usersDict[CurUserName] = settings.usersDict[CurUserName] + 1
     if(settings.usersDict[CurUserName] >= 6):
       return True
     if(settings.usersDict[CurUserName] >= 5):
@@ -91,7 +92,7 @@ def preventAbuseTalking(CurUserName):
       itchat.send_msg(u'您已达到今日加群上限，请明日再来～😊', CurUserName)
       return True
   else:
-      settings.usersDict[CurUserName] = 0 
+      settings.usersDict[CurUserName] = 1 
   return False
 
 itchat.run() 
