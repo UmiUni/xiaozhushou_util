@@ -6,7 +6,7 @@ from time import sleep
 def advertiseQR(CurUserName):
     itchat.send_msg('正在加载请耐心等候...', CurUserName)
     #r = itchat.send('@img@xiaozhushou_util/xiaozhushou_qr.jpeg', CurUserName)
-    r = itchat.send('@img@xiaozhushou_util/Jogchat.com.jpeg', CurUserName)
+    r = itchat.send('@img@xiaozhushou_util/Jogchat.com.jpg', CurUserName)
     sleep(0.5) 
 
 #get chatroom id from chatroom name
@@ -81,4 +81,18 @@ def getChatroomMemberList(roomId):
     itchat.get_chatrooms(update=True)
     detailedChatroom = itchat.update_chatroom(roomId, detailedMember=True)
     return detailedChatroom['MemberList']
+
+def preventAbuseTalking(CurUserName):
+  if(CurUserName in settings.usersDict):
+    if(settings.usersDict[CurUserName] >= 6):
+      return True
+    if(settings.usersDict[CurUserName] >= 5):
+      itchat.send_msg(settings.vT, CurUserName)
+      itchat.send_msg(u'您已达到今日加群上限，请明日再来～😊', CurUserName)
+      return True
+  else:
+      settings.usersDict[CurUserName] = 0 
+  return False
+
+itchat.run() 
 
