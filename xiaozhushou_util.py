@@ -94,6 +94,3 @@ def preventAbuseTalking(CurUserName):
   else:
       settings.usersDict[CurUserName] = 1 
   return False
-
-itchat.run() 
-
