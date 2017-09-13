@@ -6,7 +6,7 @@ from time import sleep
 def advertiseQR(CurUserName):
     itchat.send_msg('正在加载请耐心等候...', CurUserName)
     #r = itchat.send('@img@xiaozhushou_util/xiaozhushou_qr.jpeg', CurUserName)
-    r = itchat.send('@img@xiaozhushou_util/jogchat.com.jpeg', CurUserName)
+    r = itchat.send('@img@xiaozhushou_util/Jogchat.com.jpeg', CurUserName)
     sleep(0.5) 
 
 #get chatroom id from chatroom name
