@@ -1,6 +1,7 @@
 # -*- coding: UTF-8 -*-
 import settings
 import itchat
+import datetime
 from time import sleep
 
 def advertiseQR(CurUserName):
