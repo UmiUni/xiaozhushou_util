@@ -92,7 +92,7 @@ def preventAbuseTalking(CurUserName):
     settings.usersDict[CurUserName] = settings.usersDict[CurUserName] + 1
     if(settings.usersDict[CurUserName] >= 12):
       return True
-    if(settings.usersDict[CurUserName] >= 6):
+    if(settings.usersDict[CurUserName] >= 4):
       itchat.send_msg(settings.vT, CurUserName)
       itchat.send_msg(u'您已达到今日加群上限，请明日再来～😊', CurUserName)
       return True
