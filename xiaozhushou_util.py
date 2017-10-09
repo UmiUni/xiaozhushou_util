@@ -84,10 +84,9 @@ def getChatroomMemberList(roomId):
 
 def preventAbuseTalking(CurUserName):
   nowDay = datetime.datetime.now().day
-  if(settings.previousDay!=nowDay){
+  if(settings.previousDay!=nowDay):
     settings.usersDict = {} 
     settings.previousDay=nowDay
-  }
   if(CurUserName in settings.usersDict):
     settings.usersDict[CurUserName] = settings.usersDict[CurUserName] + 1
     if(settings.usersDict[CurUserName] >= 12):
