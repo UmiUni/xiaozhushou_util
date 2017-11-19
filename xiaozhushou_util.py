@@ -49,6 +49,11 @@ def pullMembersMore(msg, chatroomName, CurUserName):
       return
     chatRoomUserName = cur_chatrooms[0]['UserName']
     r = itchat.add_member_into_chatroom(chatRoomUserName,[{'UserName':CurUserName}],useInvitation=True)
+    #print r
+    #if(r['BaseResponse']['ErrMsg'] == u'\u8bf7\u6c42\u6210\u529f'):
+    #  print 'yes'
+    #settings.usersDict[CurUserName] = settings.usersDict[CurUserName] - 1
+    return r
 
 #don't use, may hurt account, don't try to kick from every group, a lot of request will be send to tencent
 def delFromAllGroup(content):
@@ -90,9 +95,9 @@ def preventAbuseTalking(CurUserName):
     settings.previousDay=nowDay
   if(CurUserName in settings.usersDict):
     settings.usersDict[CurUserName] = settings.usersDict[CurUserName] + 1
-    if(settings.usersDict[CurUserName] >= 12):
+    if(settings.usersDict[CurUserName] >= 6):
       return True
-    if(settings.usersDict[CurUserName] >= 4):
+    if(settings.usersDict[CurUserName] >= 2):
       itchat.send_msg(settings.vT, CurUserName)
       itchat.send_msg(u'您已达到今日加群上限，请明日再来～😊', CurUserName)
       return True
