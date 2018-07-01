@@ -4,10 +4,16 @@ import itchat
 import datetime
 from time import sleep
 
-def advertiseQR(CurUserName):
+def advertiseQR0(CurUserName):
     itchat.send_msg('正在加载请耐心等候...', CurUserName)
     #r = itchat.send('@img@xiaozhushou_util/xiaozhushou_qr.jpeg', CurUserName)
     r = itchat.send('@img@xiaozhushou_util/Jogchat.com.jpg', CurUserName)
+    sleep(0.5) 
+
+def advertiseQR1(CurUserName):
+    itchat.send_msg('正在加载请耐心等候...', CurUserName)
+    #r = itchat.send('@img@xiaozhushou_util/xiaozhushou_qr.jpeg', CurUserName)
+    r = itchat.send('@img@xiaozhushou_util/chaoran.jpg', CurUserName)
     sleep(0.5) 
 
 #get chatroom id from chatroom name
@@ -90,9 +96,9 @@ def preventAbuseTalking(CurUserName):
     settings.previousDay=nowDay
   if(CurUserName in settings.usersDict):
     settings.usersDict[CurUserName] = settings.usersDict[CurUserName] + 1
-    if(settings.usersDict[CurUserName] >= 12):
+    if(settings.usersDict[CurUserName] >= 6):
       return True
-    if(settings.usersDict[CurUserName] >= 4):
+    if(settings.usersDict[CurUserName] >= 3):
       itchat.send_msg(settings.vT, CurUserName)
       itchat.send_msg(u'您已达到今日加群上限，请明日再来～😊', CurUserName)
       return True
